@@ -1,25 +1,32 @@
-<section id="signin">
-    <p class="display-6 title">Please Sign In Here!</p>
-    <article class="row">
-        <div class="alert col-6 offset-3" role="alert" [ngClass]="getErrorClass()" *ngIf="message !== ''">
-            {{message}}
-        </div>
-        <section class="col-6 offset-3">
-            <form [formGroup]="signInForm" (submit)="signIn()">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-                        formControlName="email">
+<section id="signin" class="d-flex align-items-center justify-content-center">
+    <div class="form-wrapper bg-light text-dark p-1 mt-3 rounded-3">
+        <article class="row mt-5 container">
+            <div class="alert col-12" role="alert" [ngClass]="getErrorClass()" *ngIf="message !== ''">
+                {{message}}
+            </div>
+            <p class="col-12 text-center fs-4 fw-normal text-uppercase">Login</p>
+            <section class="col-12">
+                <form [formGroup]="signInForm" (submit)="signIn()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            formControlName="email">
 
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="password"
-                        formControlName="password">
-                </div>
-                <button type="submit" class="btn btn-primary"
-                    [disabled]="signInForm.invalid">Submit</button>
-            </form>
-        </section>
-    </article>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password"
+                            formControlName="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 d-flex justify-content-center"
+                        [disabled]="signInForm.invalid">Log In</button>
+                </form>
+            </section>
+            <section class="col-12">
+                <hr />
+                <a routerLink="/signup" class="btn btn-success w-50 mt-1 fw-bold mb-3" style="margin-left: 25%;">Create new
+                    Account</a>
+            </section>
+        </article>
+    </div>
 </section>

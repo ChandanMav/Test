@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
       this.message = msgObj.message;
       if (msgObj.status === 'success') {
         this.isError = false;
-        this.message = this.message;       
+        this.message = this.message;
       } else {
         this.isError = true;
       }

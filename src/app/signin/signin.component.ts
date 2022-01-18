@@ -44,10 +44,10 @@ export class SigninComponent implements OnInit {
         }, 2000);
 
       },
-      error: (e) => {
+      error: (errorMsg) => {
         this.isError = true;
-        console.log(e)
-        this.message = e.error.error.message;
+        console.log(errorMsg)
+        this.message = errorMsg;
       }
 
     })
