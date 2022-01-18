@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     SignupComponent,
     SigninComponent,
     HomeComponent,
-    ShortenPipe
+    ShortenPipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

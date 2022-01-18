@@ -15,15 +15,15 @@ export class SigninComponent implements OnInit {
   message: string = "";
   isError: boolean;
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private authServ: AuthServiceService,
-    private cmnsrvc:CommonServiceService,
-    private router:Router) { }
+    private cmnsrvc: CommonServiceService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      email: ["", Validators.required, Validators.email],
-      password: ["", Validators.required]
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -33,18 +33,18 @@ export class SigninComponent implements OnInit {
       password: this.signInForm.value.password,
       returnSecureToken: true
     }).subscribe({
-      next: (data) => { 
+      next: (data) => {
         console.log(data);
         this.isError = false;
         this.message = "Successfully Logged In!";
         this.cmnsrvc.isLoggedIn.next(true);
-       
-        setTimeout(()=> {
+
+        setTimeout(() => {
           this.router.navigate([""]);
-        }, 2000);        
-        
+        }, 2000);
+
       },
-      error: (e) => { 
+      error: (e) => {
         this.isError = true;
         console.log(e)
         this.message = e.error.error.message;

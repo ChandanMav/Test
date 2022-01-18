@@ -31,7 +31,7 @@ export class AuthServiceService implements OnDestroy {
 
   constructor(private http: HttpClient) { }
 
-  signUp(singupRequest: any): void {
+  signUp(singupRequest: any, callback:any): void {
     let signupObservable: Observable<SignUpResponse> = this.http.post<SignUpResponse>(this.BASE_URL, singupRequest, {
       params: new HttpParams().set("key", this.API_KEY)
     });
@@ -40,10 +40,12 @@ export class AuthServiceService implements OnDestroy {
       next: (dataResponse) => {
         console.log(dataResponse);
         this.messageSubject.next({ message: "Signup Successful", status: "success" });
+        callback(true);
       },
       error: (errorResp) => {
         console.log(errorResp.error.error.message)
         this.messageSubject.next({ message: errorResp.error.error.message, status: "error" });
+        callback(false);
       }
     });
   }
