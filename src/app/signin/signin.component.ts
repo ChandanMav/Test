@@ -34,19 +34,18 @@ export class SigninComponent implements OnInit {
       returnSecureToken: true
     }).subscribe({
       next: (data) => {
-        console.log(data);
+        //console.log(data);
         this.isError = false;
-        this.message = "Successfully Logged In!";
-        this.cmnsrvc.isLoggedIn.next(true);
-
+        this.message = "Successfully Logged In!";   
+        this.cmnsrvc.loggedInUser.next(true);     
         setTimeout(() => {
           this.router.navigate([""]);
         }, 2000);
 
       },
       error: (errorMsg) => {
-        this.isError = true;
-        console.log(errorMsg)
+        //console.log(errorMsg);     
+        this.isError = true;        
         this.message = errorMsg;
       }
 
